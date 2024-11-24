@@ -5,7 +5,7 @@ using UnityEngine;
 public class LidarRayCasting : MonoBehaviour
 {
     public int particleCount = 10; // Number of particles to spawn per update
-    public ParticleSystem particleSystem; // Reference to the Particle System component
+    public ParticleSystem myParticleSystem; // Renamed field to avoid shadowing
 
     private Camera cam;
     private ParticleSystem.EmitParams emitParams; // Stores particle properties
@@ -45,12 +45,11 @@ public class LidarRayCasting : MonoBehaviour
                 var hitTag = hit.collider.tag;
                 if (hitTag == "Danger")
                 {
-                    //particleSystem.GetComponent<Renderer>().material.SetInt("_IsDanger", 1);
                     emitParams.startColor = new Color(0, 0, 0, 1f);
                 }
                 else
                 {
-                    emitParams.startColor = new Color(0, 0, 0, 0f);
+                    emitParams.startColor = new Color(0, 0, 0, 0);
                 }
 
                 // Set the position of the particle to the hit point
@@ -58,7 +57,7 @@ public class LidarRayCasting : MonoBehaviour
                 emitParams.applyShapeToPosition = false; // Ensure particles are positioned exactly at the hit point
 
                 // Emit a single particle at the hit position
-                particleSystem.Emit(emitParams, 1);
+                myParticleSystem.Emit(emitParams, 1);
             }
         }
     }

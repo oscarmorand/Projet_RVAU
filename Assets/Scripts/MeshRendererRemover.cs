@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class DisableMeshRenderersOnEditorOnlyLayer : MonoBehaviour
+public class MeshRendererRemover : MonoBehaviour
 {
     void Start()
     {
         // Récupère tous les objets de la scène
-        GameObject[] allObjects = FindObjectsOfType<GameObject>();
+        GameObject[] allObjects = Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
 
         // Parcourt tous les objets
         foreach (GameObject obj in allObjects)
