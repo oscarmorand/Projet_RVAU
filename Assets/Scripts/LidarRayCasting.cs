@@ -45,11 +45,19 @@ public class LidarRayCasting : MonoBehaviour
                 var hitTag = hit.collider.tag;
                 if (hitTag == "Danger")
                 {
-                    emitParams.startColor = new Color(0, 0, 0, 1f);
+                    emitParams.startColor = new Color(0, 0, 0, 0f);
+                }
+                else if (hitTag == "Interactable")
+                {
+                    emitParams.startColor = new Color(0, 0, 0, 0.1f);
+                }
+                else if (hitTag == "Player")
+                {
+                    emitParams.startColor = new Color(0, 0, 0, 0.2f);
                 }
                 else
                 {
-                    emitParams.startColor = new Color(0, 0, 0, 0);
+                    emitParams.startColor = new Color(0, 0, 0, 1f);
                 }
 
                 // Set the position of the particle to the hit point
