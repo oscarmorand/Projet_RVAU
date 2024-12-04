@@ -10,6 +10,8 @@ public class LidarRayCasting : MonoBehaviour
     private Camera cam;
     private ParticleSystem.EmitParams emitParams; // Stores particle properties
 
+    private LayerMask ignoreMask;
+
     void Start()
     {
         // Get the camera component on the same GameObject
@@ -23,6 +25,8 @@ public class LidarRayCasting : MonoBehaviour
 
         // Set up the emit parameters (particles will remain at the emission point)
         emitParams = new ParticleSystem.EmitParams();
+
+        ignoreMask = LayerMask.GetMask("IgnoreRaycast");
     }
 
     void Update()
@@ -40,31 +44,50 @@ public class LidarRayCasting : MonoBehaviour
             Ray ray = cam.ViewportPointToRay(randomPoint);
 
             // Cast a ray from the camera in the chosen direction
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, ~ignoreMask))
             {
                 var hitTag = hit.collider.tag;
+
+             
                 if (hitTag == "Danger")
                 {
                     emitParams.startColor = new Color(0, 0, 0, 0f);
+                    emitParams.startLifetime = 2f;
                 }
                 else if (hitTag == "Interactable")
                 {
                     emitParams.startColor = new Color(0, 0, 0, 0.1f);
+                    emitParams.startLifetime = 3f;
+                }
+                else if (hitTag == "Static Interactable")
+                {
+                    emitParams.startColor = new Color(0, 0, 0, 0.1f);
+                    emitParams.startLifetime = 100f;
                 }
                 else if (hitTag == "Player")
                 {
                     emitParams.startColor = new Color(0, 0, 0, 0.2f);
+                    emitParams.startLifetime = 2f;
+                }
+                else if (hitTag == "Electrical")
+                {
+                    emitParams.startColor = new Color(0, 0, 0, 0.3f);
+                    emitParams.startLifetime = 100f;
+                }
+                else if (hitTag == "Dynamic Env")
+                {
+                    emitParams.startColor = new Color(0, 0, 0, 1f);
+                    emitParams.startLifetime = 2f;
                 }
                 else
                 {
                     emitParams.startColor = new Color(0, 0, 0, 1f);
+                    emitParams.startLifetime = 100f;
                 }
 
-                // Set the position of the particle to the hit point
+                emitParams.applyShapeToPosition = false;
                 emitParams.position = hit.point;
-                emitParams.applyShapeToPosition = false; // Ensure particles are positioned exactly at the hit point
 
-                // Emit a single particle at the hit position
                 myParticleSystem.Emit(emitParams, 1);
             }
         }

@@ -4,8 +4,12 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - Dynamic Env
   - Danger
   - Interactable
+  - Static Interactable
+  - Electrical
+  - Explosive
   layers:
   - Default
   - TransparentFX
@@ -16,7 +20,7 @@ TagManager:
   - EditorOnly
   - LController
   - RController
-  - 
+  - IgnoreRaycast
   - 
   - 
   - 

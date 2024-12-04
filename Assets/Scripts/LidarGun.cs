@@ -12,7 +12,7 @@ public class LidarGun : MonoBehaviour
     public int particleCount = 10;
     public Transform emissionPointTransform;
 
-    public ParticleSystem playerParticleSystem;
+    public ParticleSystem myParticleSystem;
     private ParticleSystem.EmitParams emitParams;
 
     InputAction castRayAction;
@@ -20,6 +20,8 @@ public class LidarGun : MonoBehaviour
 
     public float sparseLineAngle = 60.0f;
     public float denseCircleAngle = 20.0f;
+
+    private LayerMask ignoreMask;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,6 +36,8 @@ public class LidarGun : MonoBehaviour
             castRayAction = InputSystem.actions.FindAction("CastRayRight");
             castModeSwitchAction = InputSystem.actions.FindAction("CastModeSwitchRight");
         }
+
+        ignoreMask = LayerMask.GetMask("IgnoreRaycast");
     }
 
     // Update is called once per frame
@@ -86,32 +90,37 @@ public class LidarGun : MonoBehaviour
         }
     }
 
-    void CastRayAndEmitParticle(Ray ray)
+    public void CastRayAndEmitParticle(Ray ray)
     {
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, ~ignoreMask))
         {
             var hitTag = hit.collider.tag;
+
             if (hitTag == "Danger")
             {
                 emitParams.startColor = new Color(0, 0, 0, 0f);
+                emitParams.startLifetime = 2f;
             }
             else if (hitTag == "Interactable")
             {
                 emitParams.startColor = new Color(0, 0, 0, 0.1f);
+                emitParams.startLifetime = 3f;
             }
             else if (hitTag == "Player")
             {
                 emitParams.startColor = new Color(0, 0, 0, 0.2f);
+                emitParams.startLifetime = 2f;
             }
             else
             {
                 emitParams.startColor = new Color(0, 0, 0, 1f);
+                emitParams.startLifetime = 100f;
             }
 
             emitParams.position = hit.point;
             emitParams.applyShapeToPosition = false;
 
-            playerParticleSystem.Emit(emitParams, 1);
+            myParticleSystem.Emit(emitParams, 1);
         }
     }
 }
