@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/WaitingRoomScene.unity
+    guid: 3962e6aefec34344eaa11a79a4ef2cff
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: 820c5ff80b6a1744da78ae8ccdf403da
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 025bf13480029d24f86372165edb77b6, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 440bdecdcc0afb94fae2096c9fb6039f, type: 2}

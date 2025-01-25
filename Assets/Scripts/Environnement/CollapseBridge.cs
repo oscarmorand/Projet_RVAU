@@ -1,0 +1,53 @@
+using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+using System.Collections.Generic;
+
+public class CollapseBridge : MonoBehaviourPunCallbacks
+{
+    public GameObject bridge;
+    public GameObject brokenBridge;
+
+    private HashSet<int> playersWhoCrossed = new HashSet<int>();
+
+    void Start()
+    {
+        bridge.SetActive(true);
+        brokenBridge.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && PhotonNetwork.IsConnected)
+        {
+            PhotonView playerPhotonView = other.GetComponent<PhotonView>();
+
+            photonView.RPC("RPC_PlayerCrossedBridge", RpcTarget.MasterClient, playerPhotonView.OwnerActorNr);
+        }
+    }
+
+    [PunRPC]
+    void RPC_PlayerCrossedBridge(int playerId)
+    {
+        if (!playersWhoCrossed.Contains(playerId))
+        {
+            playersWhoCrossed.Add(playerId);
+            Debug.Log($"Player {playerId} crossed the bridge.");
+
+            // Vérifie si tous les joueurs ont traversé
+            if (playersWhoCrossed.Count == PhotonNetwork.CurrentRoom.PlayerCount)
+            {
+                photonView.RPC("RPC_BreakBridge", RpcTarget.All);
+            }
+        }
+    }
+
+    [PunRPC]
+    void RPC_BreakBridge()
+    {
+        bridge.SetActive(false);
+        brokenBridge.SetActive(true);
+        Debug.Log("Bridge collapsed!");
+    }
+}
+

@@ -42,6 +42,31 @@ MonoBehaviour:
   - RPC_OnButtonPressed
   - RPC_OnButtonUnpressed
   - RPC_OpenDoor
+  - RPC_BreakBridge
+  - RPC_PlayerCrossedBridge
+  - RPC_EmitParticle
+  - RPC_EmitParticles
+  - RPC_LighterOff
+  - RPC_LighterOn
+  - RPC_HideLighter
+  - RPC_ShowLighter
+  - RPC_StartExplosion
+  - RPC_HideExplosive
+  - RPC_ShowExplosive
+  - RPC_HidePaperPage
+  - RPC_ShowPaperPage
+  - RPC_DestroyWall
+  - RPC_Explode
+  - RPC_EndChase
+  - RPC_StartChase
+  - RPC_PlayerEnteredEndZone
+  - RPC_HideMesh
+  - RPC_AttackPlayer
+  - RPC_BreakLidarGun
+  - RPC_PlayerJumped
+  - RPC_EnableClimableLadder
+  - RPC_HideLadder
+  - RPC_ShowLadder
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

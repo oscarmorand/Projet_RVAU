@@ -67,7 +67,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flame: {fileID: 4083869795382170437}
-  explosion: {fileID: 0}
+  explosionPrefab: {fileID: 7658220399056847298, guid: 86a8adff8852c4144bfb7ea4cd41c5e9, type: 3}
+  isOn: 0
 --- !u!1001 &1997532602060251238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -320,6 +321,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5eaf5bf2c20c08844ae15cae7859d2b9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3569393170960253754}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5eaf5bf2c20c08844ae15cae7859d2b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5878668577045891520}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5eaf5bf2c20c08844ae15cae7859d2b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2358148965736713734}
   m_SourcePrefab: {fileID: 100100000, guid: 5eaf5bf2c20c08844ae15cae7859d2b9, type: 3}
 --- !u!1 &2567545033425122258 stripped
 GameObject:
@@ -534,6 +541,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e254e6f8a63703449b782123cc2260c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5878668577045891520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567545033425122258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &2358148965736713734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567545033425122258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 5878668577045891520}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!4 &2948186730797148520 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5eaf5bf2c20c08844ae15cae7859d2b9, type: 3}

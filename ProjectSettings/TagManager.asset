@@ -10,6 +10,7 @@ TagManager:
   - Static Interactable
   - Electrical
   - Explosive
+  - Ground
   layers:
   - Default
   - TransparentFX
