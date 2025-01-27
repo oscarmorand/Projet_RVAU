@@ -35,7 +35,14 @@ public class DestructableWall : MonoBehaviourPun
                 WickExplosive explosive = other.gameObject.GetComponent<WickExplosive>();
                 explosive.Explode();
 
-                photonView.RPC("RPC_DestroyWall", RpcTarget.All);
+                if (PhotonNetwork.IsConnected)
+                {
+                    photonView.RPC("RPC_DestroyWall", RpcTarget.All);
+                }
+                else
+                {
+                    RPC_DestroyWall();
+                }
             }
         }
     }

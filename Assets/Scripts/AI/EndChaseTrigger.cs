@@ -25,9 +25,16 @@ public class EndChaseTrigger : MonoBehaviourPun
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            PhotonView playerPhotonView = other.GetComponent<PhotonView>();
+            if (PhotonNetwork.IsConnected)
+            {
+                PhotonView playerPhotonView = other.GetComponent<PhotonView>();
 
-            photonView.RPC("RPC_PlayerEnteredEndZone", RpcTarget.MasterClient, playerPhotonView.OwnerActorNr);
+                photonView.RPC("RPC_PlayerEnteredEndZone", RpcTarget.MasterClient, playerPhotonView.OwnerActorNr);
+            }
+            else
+            {
+                chasePhase.EndChase();
+            }
         }
     }
 

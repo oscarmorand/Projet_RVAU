@@ -21,7 +21,14 @@ public class Ladder : MonoBehaviourPun
     {
         Debug.Log("Ladder grounded");
 
-        photonView.RPC("RPC_EnableClimableLadder", RpcTarget.All);
+        if (PhotonNetwork.IsConnected)
+        {
+            photonView.RPC("RPC_EnableClimableLadder", RpcTarget.All);
+        }
+        else
+        {
+            RPC_EnableClimableLadder();
+        }
     }
 
     [PunRPC]

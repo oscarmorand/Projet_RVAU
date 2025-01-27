@@ -57,13 +57,27 @@ public class WickExplosive : MonoBehaviourPun
     {
         if (isOn) return;
 
-        photonView.RPC("RPC_StartExplosion", RpcTarget.All);
+        if (PhotonNetwork.IsConnected)
+        {
+            photonView.RPC("RPC_StartExplosion", RpcTarget.All);
+        }
+        else
+        {
+            RPC_StartExplosion();
+        }
     }
 
     public void Explode()
     {
         if (hasExploded) return;
 
-        photonView.RPC("RPC_Explode", RpcTarget.All);
+        if (PhotonNetwork.IsConnected)
+        {
+            photonView.RPC("RPC_Explode", RpcTarget.All);
+        }
+        else
+        {
+            RPC_Explode();
+        }
     }
 }

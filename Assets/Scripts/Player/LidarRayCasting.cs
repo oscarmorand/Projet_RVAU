@@ -16,7 +16,7 @@ public class LidarRayCasting : MonoBehaviourPun
 
     void Start()
     {
-        if (!photonView.IsMine)
+        if (PhotonNetwork.IsConnected && !photonView.IsMine)
         {
             return;
         }
@@ -83,18 +83,21 @@ public class LidarRayCasting : MonoBehaviourPun
 
             // Emit particle to other clients
             //photonView.RPC("RPC_EmitParticle", RpcTarget.Others, position, type);
-            if (index < packetSize)
+            if (PhotonNetwork.IsConnected)
             {
-                positions[index * 3] = position.x;
-                positions[index * 3 + 1] = position.y;
-                positions[index * 3 + 2] = position.z;
-                types[index] = type;
-                index++;
-            }
-            else
-            {
-                photonView.RPC("RPC_EmitParticles", RpcTarget.Others, positions, types);
-                index = 0;
+                if (index < packetSize)
+                {
+                    positions[index * 3] = position.x;
+                    positions[index * 3 + 1] = position.y;
+                    positions[index * 3 + 2] = position.z;
+                    types[index] = type;
+                    index++;
+                }
+                else
+                {
+                    photonView.RPC("RPC_EmitParticles", RpcTarget.Others, positions, types);
+                    index = 0;
+                }
             }
 
             // Emit particle locally

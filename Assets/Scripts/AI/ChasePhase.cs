@@ -34,7 +34,14 @@ public class ChasePhase : MonoBehaviourPun
 
     public void StartChase()
     {
-        photonView.RPC("RPC_StartChase", RpcTarget.MasterClient);
+        if (PhotonNetwork.IsConnected)
+        {
+            photonView.RPC("RPC_StartChase", RpcTarget.MasterClient);
+        }
+        else
+        {
+            RPC_StartChase();
+        }
     }
 
     [PunRPC]
@@ -46,12 +53,26 @@ public class ChasePhase : MonoBehaviourPun
 
         Debug.Log("Chase started");
 
-        monster = PhotonNetwork.Instantiate(monsterPrefab.name, spawnPoint.transform.position, spawnPoint.transform.rotation);
+        if (PhotonNetwork.IsConnected)
+        {
+            monster = PhotonNetwork.Instantiate(monsterPrefab.name, spawnPoint.transform.position, spawnPoint.transform.rotation);
+        }
+        else
+        {
+            monster = Instantiate(monsterPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+        }
     }
 
     public void EndChase()
     {
-        photonView.RPC("RPC_EndChase", RpcTarget.MasterClient);
+        if (PhotonNetwork.IsConnected)
+        {
+            photonView.RPC("RPC_EndChase", RpcTarget.MasterClient);
+        }
+        else
+        {
+            RPC_EndChase();
+        }
     }
 
     [PunRPC]
@@ -63,7 +84,14 @@ public class ChasePhase : MonoBehaviourPun
 
         Debug.Log("Chase ended");
 
-        PhotonNetwork.Destroy(monster);
+        if (PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.Destroy(monster);
+        }
+        else
+        {
+            Destroy(monster);
+        }
 
         if (next != null)
         {

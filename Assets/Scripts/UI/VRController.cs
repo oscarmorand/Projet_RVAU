@@ -8,9 +8,12 @@ public class VRController : MonoBehaviourPun
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (!photonView.IsMine)
+        if (PhotonNetwork.IsConnected)
         {
-            return;
+            if (!photonView.IsMine)
+            {
+                return;
+            }
         }
 
         playerCamera.gameObject.SetActive(true);

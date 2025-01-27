@@ -6,7 +6,6 @@ using System.Collections.Generic;
 public class PhotonPlayerManager : MonoBehaviourPunCallbacks
 {
     public List<Player> playersInRoom = new List<Player>();
-
     public List<Transform> spawnPoints = new List<Transform>();
 
     public GameObject playerPrefab;
@@ -16,42 +15,58 @@ public class PhotonPlayerManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        // Ajouter les joueurs existants dans la room
-        foreach (Player player in PhotonNetwork.PlayerList)
+        if (PhotonNetwork.IsConnected)
         {
-            AddPlayer(player);
-        }
+            // Ajouter les joueurs existants dans la room
+            foreach (Player player in PhotonNetwork.PlayerList)
+            {
+                AddPlayer(player);
+            }
 
-        // Spawner uniquement le joueur local au démarrage
-        if (!hasSpawnedLocalPlayer)
+            // Spawner uniquement le joueur local au démarrage
+            if (!hasSpawnedLocalPlayer)
+            {
+                SpawnPlayer(PhotonNetwork.LocalPlayer);
+                hasSpawnedLocalPlayer = true;
+            }
+        }
+        else
         {
-            SpawnPlayer(PhotonNetwork.LocalPlayer);
-            hasSpawnedLocalPlayer = true;
+            SpawnPlayer(null);
         }
     }
 
     public override void OnJoinedRoom()
     {
-        AddPlayer(PhotonNetwork.LocalPlayer);
-        Debug.Log($"You joined the room. Total players: {playersInRoom.Count}");
-
-        if (!hasSpawnedLocalPlayer)
+        if (PhotonNetwork.IsConnected)
         {
-            SpawnPlayer(PhotonNetwork.LocalPlayer);
-            hasSpawnedLocalPlayer = true;
+            AddPlayer(PhotonNetwork.LocalPlayer);
+            Debug.Log($"You joined the room. Total players: {playersInRoom.Count}");
+
+            if (!hasSpawnedLocalPlayer)
+            {
+                SpawnPlayer(PhotonNetwork.LocalPlayer);
+                hasSpawnedLocalPlayer = true;
+            }
         }
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        AddPlayer(newPlayer);
-        Debug.Log($"Player {newPlayer.NickName} joined the room. Total players: {playersInRoom.Count}");
+        if (PhotonNetwork.IsConnected)
+        {
+            AddPlayer(newPlayer);
+            Debug.Log($"Player {newPlayer.NickName} joined the room. Total players: {playersInRoom.Count}");
+        }
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        RemovePlayer(otherPlayer);
-        Debug.Log($"Player {otherPlayer.NickName} left the room. Total players: {playersInRoom.Count}");
+        if (PhotonNetwork.IsConnected)
+        {
+            RemovePlayer(otherPlayer);
+            Debug.Log($"Player {otherPlayer.NickName} left the room. Total players: {playersInRoom.Count}");
+        }
     }
 
     private void AddPlayer(Player player)
@@ -78,15 +93,16 @@ public class PhotonPlayerManager : MonoBehaviourPunCallbacks
             return;
         }
 
-        int spawnIndex = (player.ActorNumber - 1) % spawnPoints.Count;
+        int spawnIndex = PhotonNetwork.IsConnected
+            ? (player.ActorNumber - 1) % spawnPoints.Count
+            : 0; // En offline, on spawn toujours au premier point
+
         Transform spawnPoint = spawnPoints[spawnIndex];
 
-        if (player == PhotonNetwork.LocalPlayer)
+        if (player == PhotonNetwork.LocalPlayer || !PhotonNetwork.IsConnected)
         {
-            // Utiliser la variable useVR définie dans le menu
             GameObject prefabToSpawn = Launcher.useVR ? playerVRPrefab : playerPrefab;
-
-            PhotonNetwork.Instantiate(prefabToSpawn.name, spawnPoint.position, spawnPoint.rotation);
+            Instantiate(prefabToSpawn, spawnPoint.position, spawnPoint.rotation); // Utilisation classique en offline
             Debug.Log($"Player spawned with {(Launcher.useVR ? "VR" : "Standard")} prefab at spawn point {spawnIndex}");
         }
     }

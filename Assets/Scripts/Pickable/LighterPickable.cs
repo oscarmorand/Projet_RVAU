@@ -32,7 +32,14 @@ public class LighterPickable : MonoBehaviourPun
                 if (!isOn)
                 {
                     useLighterUI.SetActive(false);
-                    photonView.RPC("RPC_LighterOn", RpcTarget.All);
+                    if (PhotonNetwork.IsConnected)
+                    {
+                        photonView.RPC("RPC_LighterOn", RpcTarget.All);
+                    }
+                    else
+                    {
+                        RPC_LighterOn();
+                    }
                 }
             }
             else
@@ -40,7 +47,14 @@ public class LighterPickable : MonoBehaviourPun
                 if (isOn)
                 {
                     useLighterUI.SetActive(true);
-                    photonView.RPC("RPC_LighterOff", RpcTarget.All);
+                    if (PhotonNetwork.IsConnected)
+                    {
+                        photonView.RPC("RPC_LighterOff", RpcTarget.All);
+                    }
+                    else
+                    {
+                        RPC_LighterOff();
+                    }
                 }
             }
         }
@@ -63,7 +77,14 @@ public class LighterPickable : MonoBehaviourPun
         isPickedUp = true;
         useLighterUI.SetActive(true);
 
-        photonView.RPC("RPC_ShowLighter", RpcTarget.All);
+        if (PhotonNetwork.IsConnected)
+        {
+            photonView.RPC("RPC_ShowLighter", RpcTarget.All);
+        }
+        else
+        {
+            RPC_ShowLighter();
+        }
     }
 
     public void OnPickupExit(SelectExitEventArgs args)
@@ -71,8 +92,16 @@ public class LighterPickable : MonoBehaviourPun
         isPickedUp = false;
         useLighterUI.SetActive(false);
 
-        photonView.RPC("RPC_HideLighter", RpcTarget.All);
-        photonView.RPC("RPC_LighterOff", RpcTarget.All);
+        if (PhotonNetwork.IsConnected)
+        {
+            photonView.RPC("RPC_HideLighter", RpcTarget.All);
+            photonView.RPC("RPC_LighterOff", RpcTarget.All);
+        }
+        else
+        {
+            RPC_HideLighter();
+            RPC_LighterOff();
+        }
     }
 
     [PunRPC]

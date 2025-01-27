@@ -27,7 +27,14 @@ public class ElectricalDoor : MonoBehaviourPun
 
     public void OnButtonPressed(int index)
     {
-        photonView.RPC("RPC_OnButtonPressed", RpcTarget.All, index);
+        if (PhotonNetwork.IsConnected)
+        {
+            photonView.RPC("RPC_OnButtonPressed", RpcTarget.All, index);
+        }
+        else
+        {
+            RPC_OpenDoor();
+        }
     }
 
     [PunRPC]
@@ -39,7 +46,10 @@ public class ElectricalDoor : MonoBehaviourPun
 
     public void OnButtonUnpressed(int index)
     {
-        photonView.RPC("RPC_OnButtonUnpressed", RpcTarget.All, index);
+        if (PhotonNetwork.IsConnected)
+        {
+            photonView.RPC("RPC_OnButtonUnpressed", RpcTarget.All, index);
+        }
     }
 
     [PunRPC]

@@ -18,11 +18,18 @@ public class CollapseBridge : MonoBehaviourPunCallbacks
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && PhotonNetwork.IsConnected)
+        if (other.CompareTag("Player"))
         {
-            PhotonView playerPhotonView = other.GetComponent<PhotonView>();
+            if (PhotonNetwork.IsConnected)
+            {
+                PhotonView playerPhotonView = other.GetComponent<PhotonView>();
 
-            photonView.RPC("RPC_PlayerCrossedBridge", RpcTarget.MasterClient, playerPhotonView.OwnerActorNr);
+                photonView.RPC("RPC_PlayerCrossedBridge", RpcTarget.MasterClient, playerPhotonView.OwnerActorNr);
+            }
+            else
+            {
+                RPC_BreakBridge();
+            }
         }
     }
 

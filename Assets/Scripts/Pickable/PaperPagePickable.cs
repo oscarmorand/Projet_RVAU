@@ -54,7 +54,15 @@ public class PaperPagePickable : MonoBehaviourPun
         pickupUI.SetActive(true);
         isPickedUp = true;
 
-        photonView.RPC("RPC_ShowPaperPage", RpcTarget.All);
+        if (PhotonNetwork.IsConnected && PhotonNetwork.InRoom)
+        {
+            photonView.RPC("RPC_ShowPaperPage", RpcTarget.All);
+        }
+        else
+        {
+            // Offline behavior
+            RPC_ShowPaperPage();
+        }
     }
 
     public void OnPickupExit(SelectExitEventArgs args)
@@ -62,7 +70,15 @@ public class PaperPagePickable : MonoBehaviourPun
         pickupUI.SetActive(false);
         isPickedUp = false;
 
-        photonView.RPC("RPC_HidePaperPage", RpcTarget.All);
+        if (PhotonNetwork.IsConnected && PhotonNetwork.InRoom)
+        {
+            photonView.RPC("RPC_HidePaperPage", RpcTarget.All);
+        }
+        else
+        {
+            // Offline behavior
+            RPC_HidePaperPage();
+        }
     }
 
     [PunRPC]

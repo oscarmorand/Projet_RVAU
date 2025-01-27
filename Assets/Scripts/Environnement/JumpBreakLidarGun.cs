@@ -24,12 +24,19 @@ public class JumpBreakLidarGun : MonoBehaviourPun
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && PhotonNetwork.IsConnected)
+        if (other.CompareTag("Player"))
         {
-            lastPlayer = other.gameObject;
-            PhotonView playerPhotonView = other.GetComponent<PhotonView>();
+            if (PhotonNetwork.IsConnected)
+            {
+                lastPlayer = other.gameObject;
+                PhotonView playerPhotonView = other.GetComponent<PhotonView>();
 
-            photonView.RPC("RPC_PlayerJumped", RpcTarget.MasterClient, playerPhotonView.OwnerActorNr);
+                photonView.RPC("RPC_PlayerJumped", RpcTarget.MasterClient, playerPhotonView.OwnerActorNr);
+            }
+            else
+            {
+                RPC_BreakLidarGun();
+            }
         }
     }
 
@@ -44,13 +51,13 @@ public class JumpBreakLidarGun : MonoBehaviourPun
             // Vérifie si tous les joueurs ont sauté
             if (playersWhoJumped.Count == PhotonNetwork.CurrentRoom.PlayerCount)
             {
-                photonView.RPC("RPC_BreakLidarGun", PhotonNetwork.CurrentRoom.GetPlayer(playerId), playerId);
+                photonView.RPC("RPC_BreakLidarGun", PhotonNetwork.CurrentRoom.GetPlayer(playerId));
             }
         }
     }
 
     [PunRPC]
-    void RPC_BreakLidarGun(int playerId)
+    void RPC_BreakLidarGun()
     {
         Debug.Log("Your lidar gun is broken!");
 

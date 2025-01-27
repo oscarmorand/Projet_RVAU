@@ -20,12 +20,26 @@ public class ExplosivePickable : MonoBehaviourPun
 
     public void OnPickupEnter(SelectEnterEventArgs args)
     {
-        photonView.RPC("RPC_ShowExplosive", RpcTarget.All);
+        if (PhotonNetwork.IsConnected)
+        {
+            photonView.RPC("RPC_ShowExplosive", RpcTarget.All);
+        }
+        else
+        {
+            RPC_ShowExplosive();
+        } 
     }
 
     public void OnPickupExit(SelectExitEventArgs args)
     {
-        photonView.RPC("RPC_HideExplosive", RpcTarget.All);
+        if (PhotonNetwork.IsConnected)
+        {
+            photonView.RPC("RPC_HideExplosive", RpcTarget.All);
+        }
+        else
+        {
+            RPC_HideExplosive();
+        }
     }
 
     [PunRPC]

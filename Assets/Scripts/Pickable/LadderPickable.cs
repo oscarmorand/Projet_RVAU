@@ -20,12 +20,26 @@ public class LadderPickable : MonoBehaviourPun
 
     public void OnPickupEnter(SelectEnterEventArgs args)
     {
-        photonView.RPC("RPC_ShowLadder", RpcTarget.All);
+        if (PhotonNetwork.IsConnected)
+        {
+            photonView.RPC("RPC_ShowLadder", RpcTarget.All);
+        }
+        else
+        {
+            RPC_ShowLadder();
+        }
     }
 
     public void OnPickupExit(SelectExitEventArgs args)
     {
-        photonView.RPC("RPC_HideLadder", RpcTarget.All);
+        if (PhotonNetwork.IsConnected)
+        {
+            photonView.RPC("RPC_HideLadder", RpcTarget.All);
+        }
+        else
+        {
+            RPC_HideLadder();
+        }
     }
 
     public void OnTriggerEnter(Collider other)
@@ -34,7 +48,14 @@ public class LadderPickable : MonoBehaviourPun
         {
             ladder.GroundLadder();
 
-            photonView.RPC("RPC_HideLadder", RpcTarget.All);
+            if (PhotonNetwork.IsConnected)
+            {
+                photonView.RPC("RPC_HideLadder", RpcTarget.All);
+            }
+            else
+            {
+                RPC_HideLadder();
+            }
         }
     }
 
