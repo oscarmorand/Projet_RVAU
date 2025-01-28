@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 204516021251717795}
   - component: {fileID: 361826205071558099}
   - component: {fileID: 137028214774444114}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sphere (3)
-  m_TagString: Interactable
+  m_TagString: Static Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181344718487750885}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 2565208085149633368}
   - component: {fileID: 1133343912274554128}
   - component: {fileID: 8868085113833572188}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Color Affordance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,9 +239,9 @@ GameObject:
   - component: {fileID: 678801850460480022}
   - component: {fileID: 8396696005840716688}
   - component: {fileID: 5627494794185144564}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sphere (11)
-  m_TagString: Interactable
+  m_TagString: Static Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -277,7 +277,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 992810946317262209}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -348,9 +348,9 @@ GameObject:
   - component: {fileID: 5560210603901610890}
   - component: {fileID: 7412463057564192743}
   - component: {fileID: 4885051645138810206}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sphere (9)
-  m_TagString: Interactable
+  m_TagString: Static Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -386,7 +386,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335726306294621009}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 2910439725224507007}
   - component: {fileID: 9013144569900918181}
   - component: {fileID: 4131874568280610204}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Color Affordance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,9 +575,9 @@ GameObject:
   - component: {fileID: 2262540444225156788}
   - component: {fileID: 7967913413767112208}
   - component: {fileID: 1883879575016029336}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sphere (6)
-  m_TagString: Interactable
+  m_TagString: Static Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -613,7 +613,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554383378418102706}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -714,7 +714,7 @@ GameObject:
   - component: {fileID: 8793826645806719356}
   - component: {fileID: 865969647513108204}
   - component: {fileID: 6908641783152738520}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Color Affordance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -832,7 +832,7 @@ GameObject:
   - component: {fileID: 3408935650221587219}
   - component: {fileID: 597740573774672194}
   - component: {fileID: 6880472113050675185}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Color Affordance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -986,7 +986,7 @@ GameObject:
   - component: {fileID: 4975499180004211052}
   - component: {fileID: 6850051076663017523}
   - component: {fileID: 2041428089937967223}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Color Affordance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1105,9 +1105,9 @@ GameObject:
   - component: {fileID: 4585286038984766413}
   - component: {fileID: 7723794883420147759}
   - component: {fileID: 439717369733204811}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sphere (12)
-  m_TagString: Interactable
+  m_TagString: Static Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1143,7 +1143,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3396871843878318475}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1214,9 +1214,9 @@ GameObject:
   - component: {fileID: 7068787224225289295}
   - component: {fileID: 7166055543281196972}
   - component: {fileID: 3515843790873843190}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sphere (4)
-  m_TagString: Interactable
+  m_TagString: Static Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1252,7 +1252,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3419960806025155352}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1666,9 +1666,9 @@ GameObject:
   - component: {fileID: 1306094126907476223}
   - component: {fileID: 1076020514907355686}
   - component: {fileID: 93195126987318303}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sphere (10)
-  m_TagString: Interactable
+  m_TagString: Static Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1704,7 +1704,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4513484292514096104}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1775,9 +1775,9 @@ GameObject:
   - component: {fileID: 2987598998760854715}
   - component: {fileID: 4360484699998216400}
   - component: {fileID: 5633733638374956631}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sphere
-  m_TagString: Interactable
+  m_TagString: Static Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1813,7 +1813,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4535386509312490371}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1883,7 +1883,7 @@ GameObject:
   - component: {fileID: 1283360978819770400}
   - component: {fileID: 3413902695399407230}
   - component: {fileID: 2013748013253220624}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Color Affordance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2002,9 +2002,9 @@ GameObject:
   - component: {fileID: 5325020502193235017}
   - component: {fileID: 2132840288933045358}
   - component: {fileID: 3696348886844436406}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sphere (7)
-  m_TagString: Interactable
+  m_TagString: Static Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2040,7 +2040,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5346308440678182804}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2110,7 +2110,7 @@ GameObject:
   - component: {fileID: 4084580064682098419}
   - component: {fileID: 9180172938938253184}
   - component: {fileID: 8665865837863865805}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Color Affordance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2336,7 +2336,7 @@ GameObject:
   - component: {fileID: 5265275951605272814}
   - component: {fileID: 4744568980206768690}
   - component: {fileID: 6692437779119651425}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Color Affordance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2454,7 +2454,7 @@ GameObject:
   - component: {fileID: 1775405642283741366}
   - component: {fileID: 6919470309891339948}
   - component: {fileID: 8851940264356948328}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Color Affordance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2572,7 +2572,7 @@ GameObject:
   - component: {fileID: 2499565462308726618}
   - component: {fileID: 578983682414731723}
   - component: {fileID: 5975386132691664631}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Color Affordance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2690,7 +2690,7 @@ GameObject:
   - component: {fileID: 6260590779630047316}
   - component: {fileID: 7265463862429668872}
   - component: {fileID: 5628270331414394476}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Color Affordance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2809,9 +2809,9 @@ GameObject:
   - component: {fileID: 1069812141866302069}
   - component: {fileID: 5127171462726277505}
   - component: {fileID: 81504351730305285}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sphere (2)
-  m_TagString: Interactable
+  m_TagString: Static Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2847,7 +2847,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6597454428352260821}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2917,7 +2917,7 @@ GameObject:
   - component: {fileID: 6996304990474286722}
   - component: {fileID: 5771040238074309673}
   - component: {fileID: 8168688500100701542}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Color Affordance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3067,9 +3067,9 @@ GameObject:
   - component: {fileID: 7500225461974594510}
   - component: {fileID: 6991517175836551768}
   - component: {fileID: 8336775329650207429}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sphere (5)
-  m_TagString: Interactable
+  m_TagString: Static Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3105,7 +3105,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7894244658522793507}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3220,9 +3220,9 @@ GameObject:
   - component: {fileID: 395464548471323258}
   - component: {fileID: 2372275683544550233}
   - component: {fileID: 3468134961166356811}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sphere (1)
-  m_TagString: Interactable
+  m_TagString: Static Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3258,7 +3258,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8065728379352541999}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3328,7 +3328,7 @@ GameObject:
   - component: {fileID: 4308508463301266179}
   - component: {fileID: 1064146489338874874}
   - component: {fileID: 7101958571369408752}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Color Affordance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3447,9 +3447,9 @@ GameObject:
   - component: {fileID: 4864742724645508329}
   - component: {fileID: 1735449296117165855}
   - component: {fileID: 9175772999508847090}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sphere (8)
-  m_TagString: Interactable
+  m_TagString: Static Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3485,7 +3485,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8801591383632762452}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

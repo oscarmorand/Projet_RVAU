@@ -50,3 +50,4 @@ MonoBehaviour:
   - {fileID: 0}
   playerPrefab: {fileID: 5728917707198868042, guid: 1607bdf6d021b4948a79ce1da482d85a, type: 3}
   playerVRPrefab: {fileID: 1857309203343692464, guid: 48607106de2891641baed82353fed28c, type: 3}
+  localUseVR: 0

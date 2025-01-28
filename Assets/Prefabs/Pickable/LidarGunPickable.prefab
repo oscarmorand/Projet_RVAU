@@ -370,8 +370,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupUI: {fileID: 0}
-  leftController: {fileID: 0}
-  rightController: {fileID: 0}
 --- !u!114 &4157629790909552479
 MonoBehaviour:
   m_ObjectHideFlags: 0

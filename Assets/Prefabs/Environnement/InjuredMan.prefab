@@ -136,7 +136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2297537496724304006}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.303, y: 0, z: 12.582}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -177,3 +177,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a6a15d5c31b434aaa2e6d5b46bd312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  injuredManDialog: {fileID: 0}
+  textComponent: {fileID: 0}
+  lines:
+  - ...
+  - Is someone there?
+  - Did you come to help me? Please hurry, I beg you.
+  - Are you trapped too? ...
+  - ...
+  - I knew it, nothing and no one can save me from this hell.
+  - I've been here for days, in the dark, staying quiet. Our group was attacked during
+    a mission to observe the creature. I managed to hide here, but my leg is injured,
+    I can't walk anymore.
+  - ...
+  - The passage collapsed? A landslide?
+  - "Then there\u2019s only one way out of here, through the rockfall. But the door
+    leading there is locked, and the only person with the key might no longer be
+    alive."
+  - "When it attacked us, he went a bit deeper into these tunnels. I have no illusions;
+    he\u2019s probably dead, but you might find the key down there."
+  - "Once you have it, find the door that leads to the rockfall and go get help.
+    I won\u2019t be able to come with you, unfortunately. I\u2019ll wait here, where
+    it\u2019s safe."
+  - ...
+  - Good luck, and be careful.
+  textSpeed: 0.01
