@@ -27,6 +27,8 @@ public class DestructableWall : MonoBehaviourPun
 
         if (other.gameObject.CompareTag("Explosive") || other.gameObject.name == "Dynamite")
         {
+            Debug.Log("An explosive ented the wall");
+
             WickExplosive wick = other.gameObject.GetComponent<WickExplosive>();
             if (wick.isOn)
             {

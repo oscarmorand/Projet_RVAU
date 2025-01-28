@@ -16,7 +16,7 @@ public class LidarCamera : MonoBehaviourPun
 
     void Start()
     {
-        if (!photonView.IsMine)
+        if (PhotonNetwork.IsConnected && !photonView.IsMine)
         {
             return;
         }
@@ -27,7 +27,7 @@ public class LidarCamera : MonoBehaviourPun
     void Update()
     {
         // Cast rays and emit particles
-        if (!photonView.IsMine)
+        if (PhotonNetwork.IsConnected && !photonView.IsMine)
         {
             return;
         }

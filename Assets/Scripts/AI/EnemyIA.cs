@@ -35,17 +35,24 @@ public class EnemyIA : MonoBehaviourPun
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.speed = speed;
 
-        if (!PhotonNetwork.IsMasterClient)
+        if (PhotonNetwork.IsConnected)
         {
-            enabled = false;
-        }
+            if (!PhotonNetwork.IsMasterClient)
+            {
+                enabled = false;
+            }
 
-        photonView.RPC("RPC_HideMesh", RpcTarget.All);
+            photonView.RPC("RPC_HideMesh", RpcTarget.All);
+        }
+        else
+        {
+            RPC_HideMesh();
+        }
     }
 
     void Update()
     {
-        if (!PhotonNetwork.IsMasterClient) return;
+        if (PhotonNetwork.IsConnected && !PhotonNetwork.IsMasterClient) return;
 
         switch (state)
         {
@@ -73,7 +80,14 @@ public class EnemyIA : MonoBehaviourPun
                 {
                     state = EnemyState.Base;
                     sleepTimer = 0.0f;
-                    photonView.RPC("RPC_HideMesh", RpcTarget.All);
+                    if (PhotonNetwork.IsConnected)
+                    {
+                        photonView.RPC("RPC_HideMesh", RpcTarget.All);
+                    }
+                    else
+                    {
+                        RPC_HideMesh();
+                    }
                 }
                 break;
         }
@@ -143,10 +157,18 @@ public class EnemyIA : MonoBehaviourPun
             return;
         }
 
-        PhotonView playerPhotonView = targetPlayer.GetComponent<PhotonView>();
-        int playerId = playerPhotonView.Owner.ActorNumber;
+        if (PhotonNetwork.IsConnected)
+        {
+            PhotonView playerPhotonView = targetPlayer.GetComponent<PhotonView>();
+            int playerId = playerPhotonView.Owner.ActorNumber;
 
-        photonView.RPC("RPC_AttackPlayer", PhotonNetwork.CurrentRoom.GetPlayer(playerId));
+            photonView.RPC("RPC_AttackPlayer", PhotonNetwork.CurrentRoom.GetPlayer(playerId));
+        }
+        else
+        {
+            RPC_AttackPlayer();
+        }
+        
 
         Debug.Log($"Attaque le joueur {targetPlayer.name}");
 

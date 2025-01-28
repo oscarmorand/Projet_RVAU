@@ -23,7 +23,7 @@ public class FirstPersonController : MonoBehaviourPun
 
     void Start()
     {
-        if (!photonView.IsMine)
+        if (PhotonNetwork.IsConnected && !photonView.IsMine)
         {
             return;
         }
@@ -46,7 +46,7 @@ public class FirstPersonController : MonoBehaviourPun
     void Update()
     {
         // Ne pas exécuter Update si ce n'est pas notre PhotonView
-        if (!photonView.IsMine)
+        if (PhotonNetwork.IsConnected && !photonView.IsMine)
         {
             return;
         }

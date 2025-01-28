@@ -44,6 +44,36 @@ public class LidarRayCasting : MonoBehaviourPun
             float lifetime = 100f;
             byte type = 0;
 
+            if (hitTag == "Transparent")
+            {
+                Renderer rend = hit.collider.GetComponent<Renderer>();
+                MeshCollider meshCollider = hit.collider as MeshCollider;
+
+                if (rend != null && rend.sharedMaterial != null && rend.sharedMaterial.mainTexture != null && meshCollider != null)
+                {
+                    Material mat = rend.sharedMaterial;
+                    Texture2D texture = mat.GetTexture("_BaseMap") as Texture2D;
+
+                    // Convertir le hitPoint en coordonnées UV
+                    Vector2 pixelUV = hit.textureCoord;
+                    pixelUV.x *= texture.width;
+                    pixelUV.y *= texture.height;
+
+                    // Lire la couleur de la texture au point d'impact
+                    Color hitColor = texture.GetPixel((int)pixelUV.x, (int)pixelUV.y);
+
+                    // Vérifier l'alpha et changer le tag
+                    if (hitColor.a < 0.1f)
+                    {
+                        hitTag = "Dynamic Env";
+                    }
+                    else
+                    {
+                        hitTag = "Interactable";
+                    }
+                }
+            }
+
             if (hitTag == "Danger")
             {
                 type = 1;
