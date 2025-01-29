@@ -110,6 +110,12 @@ public class LidarRayCasting : MonoBehaviourPun
                 color = 1f;
                 lifetime = 4f;
             }
+            else if (hitTag == "Static Player")
+            {
+                type = 7;
+                color = 0.2f;
+                lifetime = 100f;
+            }
 
             // Emit particle to other clients
             //photonView.RPC("RPC_EmitParticle", RpcTarget.Others, position, type);
@@ -191,6 +197,11 @@ public class LidarRayCasting : MonoBehaviourPun
             {
                 color = 1f;
                 lifetime = 4f;
+            }
+            else if (type == 7) // Static Player
+            {
+                color = 0.2f;
+                lifetime = 100f;
             }
 
             emitParams.startColor = new Color(0, 0, 0, color);
