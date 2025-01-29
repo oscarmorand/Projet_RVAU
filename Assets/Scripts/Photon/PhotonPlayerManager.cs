@@ -16,6 +16,9 @@ public class PhotonPlayerManager : MonoBehaviourPunCallbacks
 
     public bool localUseVR = true;
 
+    public List<Transform> localSpawnPoints = new List<Transform>();
+    public int localSpawnIndex = 0;
+
     void Start()
     {
         if (PhotonNetwork.IsConnected)
@@ -88,11 +91,17 @@ public class PhotonPlayerManager : MonoBehaviourPunCallbacks
         }
 
         int spawnIndex = 0;
+        Transform spawnPoint = null;
+
         if (player != null)
         {
             spawnIndex = (player.ActorNumber - 1) % spawnPoints.Count;
+            spawnPoint = spawnPoints[spawnIndex];
         }
-        Transform spawnPoint = spawnPoints[spawnIndex];
+        else
+        {
+            spawnPoint = localSpawnPoints[localSpawnIndex];
+        }
 
 
         if (player == null)
