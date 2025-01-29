@@ -10,6 +10,8 @@ public class CollapseBridge : MonoBehaviourPunCallbacks
 
     private HashSet<int> playersWhoCrossed = new HashSet<int>();
 
+    public bool breakOnLocal = true;
+
     void Start()
     {
         bridge.SetActive(true);
@@ -28,7 +30,10 @@ public class CollapseBridge : MonoBehaviourPunCallbacks
             }
             else
             {
-                RPC_BreakBridge();
+                if (breakOnLocal)
+                {
+                    RPC_BreakBridge();
+                }
             }
         }
     }
