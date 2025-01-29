@@ -11,6 +11,8 @@ public class ElectricalDoor : MonoBehaviourPun
     public GameObject[] buttons;
     public bool[] pressedButtons;
 
+    public BeginChaseEvent beginChaseEvent = null;
+
     void Start()
     {
         closedDoor.SetActive(true);
@@ -81,5 +83,10 @@ public class ElectricalDoor : MonoBehaviourPun
         closedDoor.SetActive(false);
         openDoor.SetActive(true);
         isOpen = true;
+
+        if (beginChaseEvent != null)
+        {
+            beginChaseEvent.OnEventStarted();
+        }
     }
 }
