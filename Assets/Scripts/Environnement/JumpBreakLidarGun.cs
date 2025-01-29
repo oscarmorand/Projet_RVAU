@@ -1,6 +1,7 @@
 using UnityEngine;
 using Photon.Pun;
 using System.Collections.Generic;
+using System.Collections;
 
 public class JumpBreakLidarGun : MonoBehaviourPun
 {
@@ -22,13 +23,13 @@ public class JumpBreakLidarGun : MonoBehaviourPun
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            lastPlayer = other.gameObject;
             if (PhotonNetwork.IsConnected)
             {
-                lastPlayer = other.gameObject;
                 PhotonView playerPhotonView = other.GetComponent<PhotonView>();
 
                 photonView.RPC("RPC_PlayerJumped", RpcTarget.MasterClient, playerPhotonView.OwnerActorNr);
@@ -57,10 +58,18 @@ public class JumpBreakLidarGun : MonoBehaviourPun
     }
 
     [PunRPC]
-    void RPC_BreakLidarGun()
+    public void RPC_BreakLidarGun()
     {
-        Debug.Log("Your lidar gun is broken!");
+        StartCoroutine(BreakLidarGun());
+    }
 
+    public IEnumerator BreakLidarGun()
+    {
+        yield return new WaitForSeconds(0.3f);
+
+        Debug.Log("Your lidar gun is broken!");
         brokenCameraUI.SetActive(true);
+
+        lastPlayer.GetComponent<LidarRayCasting>().broken = true;
     }
 }

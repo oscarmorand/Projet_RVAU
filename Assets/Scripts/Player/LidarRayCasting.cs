@@ -14,6 +14,8 @@ public class LidarRayCasting : MonoBehaviourPun
     byte[] types;
     int index;
 
+    public bool broken = false;
+
     void Start()
     {
         if (PhotonNetwork.IsConnected && !photonView.IsMine)
@@ -35,6 +37,10 @@ public class LidarRayCasting : MonoBehaviourPun
 
     public void EmitParticle(Ray ray)
     {
+        if (broken)
+        {
+            return;
+        }
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, ~ignoreMask))
         {
             var hitTag = hit.collider.tag;
