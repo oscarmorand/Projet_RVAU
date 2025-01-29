@@ -12,6 +12,8 @@ public class CollapseBridge : MonoBehaviourPunCallbacks
 
     public bool breakOnLocal = true;
 
+    public BeginChaseEvent beginChaseEvent = null;
+
     void Start()
     {
         bridge.SetActive(true);
@@ -60,6 +62,11 @@ public class CollapseBridge : MonoBehaviourPunCallbacks
         bridge.SetActive(false);
         brokenBridge.SetActive(true);
         Debug.Log("Bridge collapsed!");
+
+        if (beginChaseEvent != null)
+        {
+            beginChaseEvent.OnEventStarted();
+        }
     }
 }
 
