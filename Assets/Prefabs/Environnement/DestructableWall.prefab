@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4846151485064392199}
   - component: {fileID: 7956646137304320857}
+  - component: {fileID: 1846648479988898381}
   m_Layer: 9
   m_Name: TriggerBox
   m_TagString: Untagged
@@ -51,8 +52,21 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1.65}
+  m_Size: {x: 1, y: 1, z: 1.91}
   m_Center: {x: -0.00000011920929, y: 0, z: -0.0000009536743}
+--- !u!114 &1846648479988898381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827783483245217602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b585884bccd5541a12b791bd03727f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructableWall: {fileID: 4469764114049193293}
 --- !u!1 &2670251577079829492
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +225,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5494133539429728444}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

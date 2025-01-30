@@ -21,31 +21,15 @@ public class DestructableWall : MonoBehaviourPun
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void DestroyWall()
     {
-        if (destroyed) return;
-
-        if (other.gameObject.CompareTag("Explosive") || other.gameObject.name == "Dynamite")
+        if (PhotonNetwork.IsConnected)
         {
-            Debug.Log("An explosive ented the wall");
-
-            WickExplosive wick = other.gameObject.GetComponent<WickExplosive>();
-            if (wick.isOn)
-            {
-                Debug.Log("Explode wall");
-
-                WickExplosive explosive = other.gameObject.GetComponent<WickExplosive>();
-                explosive.Explode();
-
-                if (PhotonNetwork.IsConnected)
-                {
-                    photonView.RPC("RPC_DestroyWall", RpcTarget.All);
-                }
-                else
-                {
-                    RPC_DestroyWall();
-                }
-            }
+            photonView.RPC("RPC_DestroyWall", RpcTarget.All);
+        }
+        else
+        {
+            RPC_DestroyWall();
         }
     }
 

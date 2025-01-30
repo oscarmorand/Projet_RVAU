@@ -29,7 +29,7 @@ public class WickExplosive : MonoBehaviourPun
         flame.SetActive(true);
         flame.GetComponent<ParticleSystem>().Play();
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
 
         Explode();
     }
