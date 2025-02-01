@@ -13,6 +13,7 @@ TagManager:
   - Ground
   - Transparent
   - Static Player
+  - Key
   layers:
   - Default
   - TransparentFX
