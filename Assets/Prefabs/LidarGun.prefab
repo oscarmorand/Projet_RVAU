@@ -137,11 +137,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f1e1c931a756445b76aa5c6cd64c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  side: 0
   particleCount: 10
   emissionPointTransform: {fileID: 2661158251326317113}
-  playerParticleSystem: {fileID: 0}
   sparseLineAngle: 45
   denseCircleAngle: 8
+  lidarRayCasting: {fileID: 0}
 --- !u!4 &4377502579045950383 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5eaf5bf2c20c08844ae15cae7859d2b9, type: 3}
