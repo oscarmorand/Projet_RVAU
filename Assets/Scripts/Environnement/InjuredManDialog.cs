@@ -8,12 +8,13 @@ public class InjuredManDialog : MonoBehaviour
     public GameObject injuredManDialog;
 
     public TextMeshProUGUI textComponent;
-    public string[] lines;
+    [SerializeField] private string[] lines;
     public float textSpeed;
 
     private int index;
     private bool isTyping;
     private bool isDone;
+    private bool hasStarted;
 
     InputAction nextLineAction;
 
@@ -23,12 +24,15 @@ public class InjuredManDialog : MonoBehaviour
         injuredManDialog.SetActive(false);
 
         nextLineAction = InputSystem.actions.FindAction("Pick");
+
+        isDone = false;
+        hasStarted = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isTyping)
+        if (isTyping || !hasStarted || isDone)
         {
             return;
         }
@@ -42,6 +46,7 @@ public class InjuredManDialog : MonoBehaviour
     {
         index = 0;
         isDone = false;
+        hasStarted = true;
         textComponent.text = string.Empty;
         StartCoroutine(TypeLine());
     }
@@ -56,6 +61,7 @@ public class InjuredManDialog : MonoBehaviour
         }
         else
         {
+            textComponent.text = string.Empty;
             injuredManDialog.SetActive(false);
             isDone = true;
         }
@@ -76,7 +82,7 @@ public class InjuredManDialog : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (isDone)
+            if (isDone || hasStarted)
             {
                 return;
             }

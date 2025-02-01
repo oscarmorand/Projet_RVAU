@@ -67,6 +67,8 @@ MonoBehaviour:
   - RPC_EnableClimableLadder
   - RPC_HideLadder
   - RPC_ShowLadder
+  - RPC_HideKey
+  - RPC_ShowKey
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

@@ -1,7 +1,6 @@
 using UnityEngine;
 using Photon.Pun;
 
-
 public class KeyDoor : MonoBehaviourPun
 {
     public GameObject closedDoor;
@@ -19,24 +18,19 @@ public class KeyDoor : MonoBehaviourPun
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OpenDoor()
     {
-        if (other.gameObject.CompareTag("Key"))
+        if (PhotonNetwork.IsConnected)
         {
-            other.gameObject.SetActive(false);
-
-            if (PhotonNetwork.IsConnected)
-            {
-                photonView.RPC("RPC_OpenDoor", RpcTarget.All);
-            }
-            else
-            {
-                RPC_OpenDoor();
-            }
+            photonView.RPC("RPC_OpenDoor", RpcTarget.All);
+        }
+        else
+        {
+            RPC_OpenDoor();
         }
     }
 
-    [PunRPC]
+        [PunRPC]
     void RPC_OpenDoor()
     {
         closedDoor.SetActive(false);

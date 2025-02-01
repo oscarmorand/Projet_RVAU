@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1438470018754469390
+--- !u!1 &4346232880354242847
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3826796455344957108}
-  - component: {fileID: 8367640147450555458}
-  - component: {fileID: 899638773278135631}
-  - component: {fileID: 2981138449420856458}
+  - component: {fileID: 6855703608962248918}
+  - component: {fileID: 4772464250914986082}
+  - component: {fileID: 2774399454122797532}
+  - component: {fileID: 3689005019583938121}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Cube
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3826796455344957108
+--- !u!4 &6855703608962248918
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438470018754469390}
+  m_GameObject: {fileID: 4346232880354242847}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.09999999, y: 0.099999994, z: 0.099999994}
+  m_LocalScale: {x: 0.06, y: 0.17, z: 0.06}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559102001462000051}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!33 &8367640147450555458
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &4772464250914986082
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438470018754469390}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &899638773278135631
+  m_GameObject: {fileID: 4346232880354242847}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2774399454122797532
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438470018754469390}
+  m_GameObject: {fileID: 4346232880354242847}
   m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -87,13 +87,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2981138449420856458
-CapsuleCollider:
+--- !u!65 &3689005019583938121
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438470018754469390}
+  m_GameObject: {fileID: 4346232880354242847}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -105,10 +105,8 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1308773429469732440
 PrefabInstance:
@@ -132,15 +130,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5eaf5bf2c20c08844ae15cae7859d2b9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 168.462
+      value: 168.567
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5eaf5bf2c20c08844ae15cae7859d2b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -25.402
+      value: -25.438
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5eaf5bf2c20c08844ae15cae7859d2b9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 254.942
+      value: 255.07
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5eaf5bf2c20c08844ae15cae7859d2b9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -226,7 +224,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5eaf5bf2c20c08844ae15cae7859d2b9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3826796455344957108}
+      addedObject: {fileID: 6855703608962248918}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5eaf5bf2c20c08844ae15cae7859d2b9, type: 3}
       insertIndex: -1
@@ -243,6 +241,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5eaf5bf2c20c08844ae15cae7859d2b9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4838034421150205448}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5eaf5bf2c20c08844ae15cae7859d2b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8252190611518557572}
   m_SourcePrefab: {fileID: 100100000, guid: 5eaf5bf2c20c08844ae15cae7859d2b9, type: 3}
 --- !u!4 &1559102001462000051 stripped
 Transform:
@@ -329,8 +330,8 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PaperPagePickable, Assembly-CSharp
+      - m_Target: {fileID: 8252190611518557572}
+        m_TargetAssemblyTypeName: DoorKeyPickable, Assembly-CSharp
         m_MethodName: OnPickupEnter
         m_Mode: 0
         m_Arguments:
@@ -344,8 +345,8 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PaperPagePickable, Assembly-CSharp
+      - m_Target: {fileID: 8252190611518557572}
+        m_TargetAssemblyTypeName: DoorKeyPickable, Assembly-CSharp
         m_MethodName: OnPickupExit
         m_Mode: 0
         m_Arguments:
@@ -489,3 +490,17 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &8252190611518557572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2227271556626539273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5104505e5bf70478d5cb2b95f96d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupUI: {fileID: 0}
+  beginChaseEvent: {fileID: 0}

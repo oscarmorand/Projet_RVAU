@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using Photon.Pun;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class DoorKeyPickable : MonoBehaviour
+public class DoorKeyPickable : MonoBehaviourPun
 {
     public GameObject pickupUI;
 
@@ -49,11 +50,57 @@ public class DoorKeyPickable : MonoBehaviour
 
         pickupUI.SetActive(true);
         isPickedUp = true;
+
+        if (PhotonNetwork.IsConnected)
+        {
+            photonView.RPC("RPC_ShowKey", RpcTarget.All);
+        }
+        else
+        {
+            RPC_ShowKey();
+        }
     }
 
     public void OnPickupExit(SelectExitEventArgs args)
     {
         pickupUI.SetActive(false);
         isPickedUp = false;
+
+        if (PhotonNetwork.IsConnected)
+        {
+            photonView.RPC("RPC_HideKey", RpcTarget.All);
+        }
+        else
+        {
+            RPC_HideKey();
+        }
+    }
+
+    [PunRPC]
+    public void RPC_ShowKey()
+    {
+        foreach (Transform child in transform)
+        {
+            GameObject obj = child.gameObject;
+            MeshRenderer renderer = obj.GetComponent<MeshRenderer>();
+            if (renderer != null)
+            {
+                renderer.enabled = true;
+            }
+        }
+    }
+
+    [PunRPC]
+    public void RPC_HideKey()
+    {
+        foreach (Transform child in transform)
+        {
+            GameObject obj = child.gameObject;
+            MeshRenderer renderer = obj.GetComponent<MeshRenderer>();
+            if (renderer != null)
+            {
+                renderer.enabled = false;
+            }
+        }
     }
 }
