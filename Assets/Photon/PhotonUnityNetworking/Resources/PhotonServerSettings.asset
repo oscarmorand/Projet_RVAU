@@ -69,6 +69,8 @@ MonoBehaviour:
   - RPC_ShowLadder
   - RPC_HideKey
   - RPC_ShowKey
+  - RPC_PlayerEnteredBeginChaseZone
+  - RPC_PlayerEnteredEndGame
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
