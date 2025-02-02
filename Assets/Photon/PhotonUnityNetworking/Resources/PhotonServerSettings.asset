@@ -72,6 +72,7 @@ MonoBehaviour:
   - RPC_PlayerEnteredBeginChaseZone
   - RPC_PlayerEnteredEndGame
   - RPC_PlayFirstScream
+  - RPC_PlayBreakSound
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

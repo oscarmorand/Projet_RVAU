@@ -11,6 +11,8 @@ public class JumpBreakLidarGun : MonoBehaviourPun
 
     public GameObject brokenCameraUI;
 
+    public GameObject breakSoundPoint;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -71,5 +73,20 @@ public class JumpBreakLidarGun : MonoBehaviourPun
         brokenCameraUI.SetActive(true);
 
         lastPlayer.GetComponent<LidarRayCasting>().broken = true;
+
+        if (PhotonNetwork.IsConnected)
+        {
+            photonView.RPC("RPC_PlayBreakSound", RpcTarget.All);
+        }
+        else
+        {
+            RPC_PlayBreakSound();
+        }
+    }
+
+    [PunRPC]
+    public void RPC_PlayBreakSound()
+    {
+        breakSoundPoint.GetComponent<AudioSource>().Play();
     }
 }
