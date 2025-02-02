@@ -1,5 +1,6 @@
 using UnityEngine;
 using Photon.Pun;
+using System.Collections;
 
 public class ElectricalDoor : MonoBehaviourPun
 {
@@ -12,6 +13,8 @@ public class ElectricalDoor : MonoBehaviourPun
     public bool[] pressedButtons;
 
     public BeginChaseEvent beginChaseEvent = null;
+
+    public AudioSource openSound;
 
     void Start()
     {
@@ -35,7 +38,10 @@ public class ElectricalDoor : MonoBehaviourPun
         }
         else
         {
-            RPC_OpenDoor();
+            if (!isOpen)
+            {
+                RPC_OpenDoor();
+            }
         }
     }
 
@@ -62,6 +68,10 @@ public class ElectricalDoor : MonoBehaviourPun
 
     void CheckDoor()
     {
+        if (isOpen)
+        {
+            return;
+        }
         foreach (bool pressed in pressedButtons)
         {
             if (!pressed)
@@ -69,11 +79,6 @@ public class ElectricalDoor : MonoBehaviourPun
                 return;
             }
         }
-        OpenDoor();
-    }
-
-    void OpenDoor()
-    {
         photonView.RPC("RPC_OpenDoor", RpcTarget.All);
     }
 
@@ -83,6 +88,15 @@ public class ElectricalDoor : MonoBehaviourPun
         closedDoor.SetActive(false);
         openDoor.SetActive(true);
         isOpen = true;
+
+        StartCoroutine(StartChase());
+
+        openSound.Play();
+    }
+
+    IEnumerator StartChase()
+    {
+        yield return new WaitForSeconds(3f);
 
         if (beginChaseEvent != null)
         {

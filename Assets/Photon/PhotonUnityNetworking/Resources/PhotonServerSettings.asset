@@ -71,6 +71,7 @@ MonoBehaviour:
   - RPC_ShowKey
   - RPC_PlayerEnteredBeginChaseZone
   - RPC_PlayerEnteredEndGame
+  - RPC_PlayFirstScream
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

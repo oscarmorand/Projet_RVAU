@@ -16,6 +16,8 @@ public class LidarRayCasting : MonoBehaviourPun
 
     public bool broken = false;
 
+    public AudioSource bipSound;
+
     void Start()
     {
         if (PhotonNetwork.IsConnected && !photonView.IsMine)
@@ -151,6 +153,14 @@ public class LidarRayCasting : MonoBehaviourPun
             emitParams.startLifetime = lifetime;
 
             myParticleSystem.Emit(emitParams, 1);
+
+            if (type == 1)
+            {
+                if (!bipSound.isPlaying)
+                {
+                    bipSound.Play();
+                }
+            }
         }
     }
 

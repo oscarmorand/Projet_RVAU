@@ -2,6 +2,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Collections.Generic;
+using System.Collections;
 
 public class CollapseBridge : MonoBehaviourPunCallbacks
 {
@@ -13,6 +14,8 @@ public class CollapseBridge : MonoBehaviourPunCallbacks
     public bool breakOnLocal = true;
 
     public BeginChaseEvent beginChaseEvent = null;
+
+    public AudioSource breakingAudio;
 
     void Start()
     {
@@ -62,6 +65,15 @@ public class CollapseBridge : MonoBehaviourPunCallbacks
         bridge.SetActive(false);
         brokenBridge.SetActive(true);
         Debug.Log("Bridge collapsed!");
+
+        breakingAudio.Play();
+
+        StartCoroutine(StartChase());
+    }
+
+    IEnumerator StartChase()
+    {
+        yield return new WaitForSeconds(3f);
 
         if (beginChaseEvent != null)
         {

@@ -1,6 +1,7 @@
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.AI;
+using System.Collections;
 
 public class EnemyIA : MonoBehaviourPun
 {
@@ -20,6 +21,7 @@ public class EnemyIA : MonoBehaviourPun
 
     public float sleepDuration = 5.0f;
     private float sleepTimer = 0.0f;
+    private bool isSleeping = false;
 
     public EnemyState state;
     private GameObject targetPlayer;
@@ -27,6 +29,12 @@ public class EnemyIA : MonoBehaviourPun
 
     public MeshRenderer mesh;
     public MeshRenderer hairMesh;
+
+    public AudioSource firstScreamAudio;
+    public AudioSource jumpscareAudio;
+
+    private bool isLooking = false;
+    public Transform monsterEyes;
 
     void Start()
     {
@@ -43,10 +51,12 @@ public class EnemyIA : MonoBehaviourPun
             }
 
             photonView.RPC("RPC_HideMesh", RpcTarget.All);
+            photonView.RPC("RPC_PlayFirstScream", RpcTarget.All);
         }
         else
         {
             RPC_HideMesh();
+            RPC_PlayFirstScream();
         }
     }
 
@@ -75,20 +85,7 @@ public class EnemyIA : MonoBehaviourPun
                 break;
 
             case EnemyState.Sleep:
-                sleepTimer += Time.deltaTime;
-                if (sleepTimer >= sleepDuration)
-                {
-                    state = EnemyState.Base;
-                    sleepTimer = 0.0f;
-                    if (PhotonNetwork.IsConnected)
-                    {
-                        photonView.RPC("RPC_HideMesh", RpcTarget.All);
-                    }
-                    else
-                    {
-                        RPC_HideMesh();
-                    }
-                }
+                StartCoroutine(Sleep());
                 break;
         }
     }
@@ -157,6 +154,8 @@ public class EnemyIA : MonoBehaviourPun
             return;
         }
 
+        navMeshAgent.ResetPath();
+
         if (PhotonNetwork.IsConnected)
         {
             PhotonView playerPhotonView = targetPlayer.GetComponent<PhotonView>();
@@ -169,10 +168,21 @@ public class EnemyIA : MonoBehaviourPun
             RPC_AttackPlayer();
         }
         
-
         Debug.Log($"Attaque le joueur {targetPlayer.name}");
 
         state = EnemyState.Sleep;
+    }
+
+    IEnumerator Sleep()
+    {
+        if (isSleeping)
+            yield break;
+
+        isSleeping = true;
+        yield return new WaitForSeconds(sleepDuration);
+        isSleeping = false;
+
+        state = EnemyState.Base;
     }
 
     float CalculatePathDistance(Vector3 targetPosition)
@@ -205,11 +215,84 @@ public class EnemyIA : MonoBehaviourPun
     public void RPC_AttackPlayer()
     {
         ShowMesh();
+        Jumpscare();
     }
 
     public void ShowMesh()
     {
         mesh.enabled = true;
         hairMesh.enabled = true;
+    }
+
+    public void Jumpscare()
+    {
+        jumpscareAudio.Play();
+
+        Camera cam = targetPlayer.GetComponent<Camera>();
+        if (cam == null)
+        {
+            cam = targetPlayer.GetComponentInChildren<Camera>();
+        }
+
+        Transform camTransform = cam.transform;
+
+        if (!isLooking)
+        {
+            StartCoroutine(LookAtForOneSecond(monsterEyes, camTransform));
+        }
+    }
+
+    private IEnumerator LookAtForOneSecond(Transform target, Transform cameraTransform)
+    {
+        isLooking = true;
+
+        Quaternion initialRotation = cameraTransform.rotation;
+        Quaternion targetRotation = Quaternion.LookRotation(target.position - cameraTransform.position);
+
+        float transition = 0.2f;
+        float duration = 1.0f;
+
+        float elapsed = 0f;
+        while (elapsed < transition)
+        {
+            cameraTransform.rotation = Quaternion.Slerp(initialRotation, targetRotation, elapsed / transition);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        elapsed = 0f;
+        while (elapsed < duration)
+        {
+            cameraTransform.rotation = Quaternion.LookRotation(target.position - cameraTransform.position);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        targetRotation = Quaternion.LookRotation(target.position - cameraTransform.position);
+        elapsed = 0f;
+        while (elapsed < transition)
+        {
+            cameraTransform.rotation = Quaternion.Slerp(targetRotation, initialRotation, elapsed / transition);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        cameraTransform.rotation = initialRotation; // Assure une rotation finale précise
+        isLooking = false;
+
+        if (PhotonNetwork.IsConnected)
+        {
+            photonView.RPC("RPC_HideMesh", RpcTarget.All);
+        }
+        else
+        {
+            RPC_HideMesh();
+        }
+    }
+
+    [PunRPC]
+    public void RPC_PlayFirstScream()
+    {
+        firstScreamAudio.Play();
     }
 }
