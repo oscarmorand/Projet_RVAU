@@ -16,6 +16,9 @@ public class PaperPagePickable : MonoBehaviourPun
     InputAction pickAction;
     InputAction cancelAction;
 
+    public AudioSource pickSound;
+    public AudioSource unpickSound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -35,6 +38,8 @@ public class PaperPagePickable : MonoBehaviourPun
                 CancelUI.SetActive(true);
 
                 isReading = true;
+
+                pickSound.Play();
             }
         }
 
@@ -45,6 +50,8 @@ public class PaperPagePickable : MonoBehaviourPun
                 pageUI.SetActive(false);
                 CancelUI.SetActive(false);
                 isReading = false;
+
+                unpickSound.Play();
             }
         }
     }

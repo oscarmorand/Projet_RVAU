@@ -1,5 +1,6 @@
 using UnityEngine;
 using Photon.Pun;
+using System.Collections;
 
 public class DestructableWall : MonoBehaviourPun
 {
@@ -7,6 +8,8 @@ public class DestructableWall : MonoBehaviourPun
     public GameObject fallingWall;
 
     public bool destroyed = false;
+
+    public AudioSource landslideSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,5 +42,13 @@ public class DestructableWall : MonoBehaviourPun
         destroyed = true;
         GameObject.Destroy(destructableWall);
         fallingWall.SetActive(true);
+
+        StartCoroutine(PlayLandslideSound());
+    }
+
+    IEnumerator PlayLandslideSound()
+    {
+        yield return new WaitForSeconds(1f);
+        landslideSound.Play();
     }
 }

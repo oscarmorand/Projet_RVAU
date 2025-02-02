@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using TMPro;
 using Photon.Pun;
 using UnityEngine.XR.Interaction.Toolkit;
+using System.Collections;
 
 public class DoorKeyPickable : MonoBehaviourPun
 {
@@ -15,6 +16,8 @@ public class DoorKeyPickable : MonoBehaviourPun
     private GameObject usedController;
 
     public BeginChaseEvent beginChaseEvent = null;
+
+    public AudioSource pickedSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,13 +36,28 @@ public class DoorKeyPickable : MonoBehaviourPun
                 usedController.GetComponent<ControllerDoorKey>().OnPickup();
                 isPickedUp = false;
 
-                if (beginChaseEvent != null)
+                StartCoroutine(StartChasing());
+
+                if (PhotonNetwork.IsConnected)
                 {
-                    beginChaseEvent.OnEventStarted();
+                    photonView.RPC("RPC_PlayPickedSound", RpcTarget.All);
+                }
+                else
+                {
+                    RPC_PlayPickedSound();
                 }
 
-                GameObject.Destroy(gameObject);
+                //GameObject.Destroy(gameObject);
             }
+        }
+    }
+
+    IEnumerator StartChasing()
+    {
+        yield return new WaitForSeconds(2);
+        if (beginChaseEvent != null)
+        {
+            beginChaseEvent.OnEventStarted();
         }
     }
 
@@ -102,5 +120,11 @@ public class DoorKeyPickable : MonoBehaviourPun
                 renderer.enabled = false;
             }
         }
+    }
+
+    [PunRPC]
+    public void RPC_PlayPickedSound()
+    {
+        pickedSound.Play();
     }
 }

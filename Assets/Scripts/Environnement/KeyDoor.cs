@@ -1,10 +1,14 @@
 using UnityEngine;
 using Photon.Pun;
+using System.Collections;
 
 public class KeyDoor : MonoBehaviourPun
 {
     public GameObject closedDoor;
     public GameObject openDoor;
+
+    public AudioSource unlockSound;
+    public AudioSource openDoorSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,10 +34,17 @@ public class KeyDoor : MonoBehaviourPun
         }
     }
 
-        [PunRPC]
+    [PunRPC]
     void RPC_OpenDoor()
     {
+        unlockSound.Play();
         closedDoor.SetActive(false);
         openDoor.SetActive(true);
+    }
+
+    IEnumerator PlayOpenSound()
+    {
+        yield return new WaitForSeconds(1f);
+        openDoorSound.Play();
     }
 }

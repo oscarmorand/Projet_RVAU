@@ -16,6 +16,8 @@ public class LighterPickable : MonoBehaviourPun
 
     InputAction useAction;
 
+    public AudioSource onSound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -135,6 +137,8 @@ public class LighterPickable : MonoBehaviourPun
     [PunRPC]
     void RPC_LighterOn()
     {
+        onSound.Play();
+
         flame.SetActive(true);
         flameVFX.GetComponent<ParticleSystem>().Play();
         isOn = true;
