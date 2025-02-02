@@ -20156,6 +20156,10 @@ PrefabInstance:
       propertyPath: pickupUI
       value: 
       objectReference: {fileID: 1760457660}
+    - target: {fileID: 5247685049567439515, guid: 61776329acaa463479cedf51b26399b6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b7db2658d7c580944ae57a4fe823e079, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30105,6 +30109,10 @@ PrefabInstance:
       propertyPath: pickupUI
       value: 
       objectReference: {fileID: 1760457660}
+    - target: {fileID: 5247685049567439515, guid: 61776329acaa463479cedf51b26399b6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b7db2658d7c580944ae57a4fe823e079, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -37933,7 +37941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6479370111665254447, guid: 1e8d0e659b4a0654fabd9965d8e3c97a, type: 3}
       propertyPath: localSpawnIndex
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6479370111665254447, guid: 1e8d0e659b4a0654fabd9965d8e3c97a, type: 3}
       propertyPath: 'spawnPoints.Array.data[0]'
