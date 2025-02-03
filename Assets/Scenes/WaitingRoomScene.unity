@@ -6536,7 +6536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCountText: {fileID: 1849121487}
   maxPlayers: 2
-  gameSceneName: SampleScene
+  gameSceneName: GameScene
 --- !u!114 &1849121487
 MonoBehaviour:
   m_ObjectHideFlags: 0
