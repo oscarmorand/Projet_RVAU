@@ -12,6 +12,9 @@ public class ElectricalDoorButton : MonoBehaviourPun
     public AudioSource pushSound;
     public AudioSource buzzingSound;
 
+    public GameObject buttonObj;
+    public GameObject baseObj;
+
     public void OnButtonPressed(SelectEnterEventArgs args)
     {
         StartPush();
@@ -25,6 +28,7 @@ public class ElectricalDoorButton : MonoBehaviourPun
             door.GetComponent<ElectricalDoor>().OnButtonUnpressed(index);
         }
         StopBuzzing();
+        Hide();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -57,6 +61,7 @@ public class ElectricalDoorButton : MonoBehaviourPun
                 door.GetComponent<ElectricalDoor>().OnButtonUnpressed(index);
             }
             StopBuzzing();
+            Hide();
         }
     }
 
@@ -69,17 +74,33 @@ public class ElectricalDoorButton : MonoBehaviourPun
             door.GetComponent<ElectricalDoor>().OnButtonPressed(index);
         }
 
+        Show();
+
         StartCoroutine(PlayBuzzingSound());
     }
 
     IEnumerator PlayBuzzingSound()
     {
         yield return new WaitForSeconds(0.4f);
+        buzzingSound.enabled = true;
         buzzingSound.Play();
     }
 
     private void StopBuzzing()
     {
         buzzingSound.Stop();
+        buzzingSound.enabled = false;
+    }
+
+    public void Show()
+    {
+        buttonObj.GetComponent<MeshRenderer>().enabled = true;
+        baseObj.GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    public void Hide()
+    {
+        buttonObj.GetComponent<MeshRenderer>().enabled = false;
+        baseObj.GetComponent<MeshRenderer>().enabled = false;
     }
 }

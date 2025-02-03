@@ -13,6 +13,8 @@ public class WickExplosive : MonoBehaviourPun
     public AudioSource explosionSound;
     public AudioSource wickSound;
 
+    private GameObject explosiveObj;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -47,12 +49,16 @@ public class WickExplosive : MonoBehaviourPun
 
         hasExploded = true;
 
-        GameObject explosiveObj = gameObject.transform.parent.gameObject;
+        explosiveObj = gameObject.transform.parent.gameObject;
 
         GameObject explosion = Instantiate(explosionPrefab, explosiveObj.transform.position, Quaternion.identity);
         explosion.GetComponent<ParticleSystem>().Play();
+    }
 
-        //GameObject.Destroy(explosiveObj);
+    IEnumerator destroyGameObject()
+    {
+        yield return new WaitForSeconds(2f);
+        GameObject.Destroy(explosiveObj);
     }
 
     [PunRPC]
