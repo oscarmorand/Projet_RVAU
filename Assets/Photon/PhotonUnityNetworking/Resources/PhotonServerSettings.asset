@@ -74,6 +74,7 @@ MonoBehaviour:
   - RPC_PlayFirstScream
   - RPC_PlayBreakSound
   - RPC_PlayPickedSound
+  - RPC_ShowMesh
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

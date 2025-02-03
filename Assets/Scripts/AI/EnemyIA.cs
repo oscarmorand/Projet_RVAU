@@ -214,32 +214,35 @@ public class EnemyIA : MonoBehaviourPun
     [PunRPC]
     public void RPC_AttackPlayer()
     {
-        ShowMesh();
-        Jumpscare();
+        //RPC_ShowMesh();
+        StartCoroutine(LookAtJumpscare());
+        //RPC_HideMesh();
     }
 
-    public void ShowMesh()
+    [PunRPC]
+    public void RPC_ShowMesh()
     {
         mesh.enabled = true;
         hairMesh.enabled = true;
     }
 
-    public void Jumpscare()
+    private IEnumerator LookAtJumpscare()
     {
+        if (isLooking)
+        {
+            yield break;
+        }
+
+        isLooking = true;
+
         jumpscareAudio.Play();
+        var jumpscare = targetPlayer.GetComponent<Jumpscare>();
 
-        Camera cam = targetPlayer.GetComponent<Camera>();
-        if (cam == null)
-        {
-            cam = targetPlayer.GetComponentInChildren<Camera>();
-        }
+        jumpscare.StartJumpscare();
+        yield return new WaitForSeconds(1f);
+        jumpscare.StopJumpscare();
 
-        Transform camTransform = cam.transform;
-
-        if (!isLooking)
-        {
-            StartCoroutine(LookAtForOneSecond(monsterEyes, camTransform));
-        }
+        isLooking = false;
     }
 
     private IEnumerator LookAtForOneSecond(Transform target, Transform cameraTransform)
@@ -277,17 +280,8 @@ public class EnemyIA : MonoBehaviourPun
             yield return null;
         }
 
-        cameraTransform.rotation = initialRotation; // Assure une rotation finale précise
+        cameraTransform.rotation = initialRotation;
         isLooking = false;
-
-        if (PhotonNetwork.IsConnected)
-        {
-            photonView.RPC("RPC_HideMesh", RpcTarget.All);
-        }
-        else
-        {
-            RPC_HideMesh();
-        }
     }
 
     [PunRPC]
