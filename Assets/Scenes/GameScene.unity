@@ -8082,7 +8082,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1581983012}
   monsterPrefab: {fileID: 5749101376450804498, guid: 9ed55fa90dbfefb4ea16a5dbf97e7e9c, type: 3}
   monster: {fileID: 0}
-  state: 1
+  state: 0
   next: {fileID: 1188275737}
 --- !u!4 &533289796
 Transform:
@@ -38240,15 +38240,15 @@ PrefabInstance:
     - target: {fileID: 6479370111665254447, guid: 1e8d0e659b4a0654fabd9965d8e3c97a, type: 3}
       propertyPath: 'spawnPoints.Array.data[0]'
       value: 
-      objectReference: {fileID: 1212609991}
+      objectReference: {fileID: 1231893135}
     - target: {fileID: 6479370111665254447, guid: 1e8d0e659b4a0654fabd9965d8e3c97a, type: 3}
       propertyPath: 'spawnPoints.Array.data[1]'
       value: 
-      objectReference: {fileID: 580002734}
+      objectReference: {fileID: 723528951}
     - target: {fileID: 6479370111665254447, guid: 1e8d0e659b4a0654fabd9965d8e3c97a, type: 3}
       propertyPath: 'spawnPoints.Array.data[2]'
       value: 
-      objectReference: {fileID: 66432528}
+      objectReference: {fileID: 619503060}
     - target: {fileID: 6479370111665254447, guid: 1e8d0e659b4a0654fabd9965d8e3c97a, type: 3}
       propertyPath: localSpawnPoints.Array.size
       value: 6
