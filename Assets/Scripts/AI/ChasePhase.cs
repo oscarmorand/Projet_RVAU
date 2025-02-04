@@ -34,6 +34,10 @@ public class ChasePhase : MonoBehaviourPun
 
     public void StartChase()
     {
+        if (state == ChaseState.Chasing || state == ChaseState.Ended)
+        {
+            return;
+        }
         if (PhotonNetwork.IsConnected)
         {
             photonView.RPC("RPC_StartChase", RpcTarget.MasterClient);
@@ -48,6 +52,11 @@ public class ChasePhase : MonoBehaviourPun
     public void RPC_StartChase()
     {
         if (state != ChaseState.NotStarted) return;
+
+        if (state == ChaseState.Chasing || state == ChaseState.Ended)
+        {
+            return;
+        }
 
         state = ChaseState.Chasing;
 
