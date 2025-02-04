@@ -1367,6 +1367,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 649d9d0a697c5984a98e6a3953242acb, type: 3}
   m_PrefabInstance: {fileID: 1059252553}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &66432527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 66432528}
+  m_Layer: 0
+  m_Name: BridgesCavePoint (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &66432528
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66432527}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 35.781, y: -17.875, z: 270.04}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2078835976}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &68003678
 GameObject:
   m_ObjectHideFlags: 0
@@ -5255,13 +5286,43 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6369325855545208305, guid: 6d95d92859f443c458721441f4da8367, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1989259277}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2297537496724304006, guid: 6d95d92859f443c458721441f4da8367, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 334853201}
   m_SourcePrefab: {fileID: 100100000, guid: 6d95d92859f443c458721441f4da8367, type: 3}
 --- !u!4 &334853199 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6369325855545208305, guid: 6d95d92859f443c458721441f4da8367, type: 3}
   m_PrefabInstance: {fileID: 334853198}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &334853200 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2297537496724304006, guid: 6d95d92859f443c458721441f4da8367, type: 3}
+  m_PrefabInstance: {fileID: 334853198}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &334853201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334853200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 34
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &342408796
 GameObject:
   m_ObjectHideFlags: 0
@@ -8021,7 +8082,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1581983012}
   monsterPrefab: {fileID: 5749101376450804498, guid: 9ed55fa90dbfefb4ea16a5dbf97e7e9c, type: 3}
   monster: {fileID: 0}
-  state: 0
+  state: 1
   next: {fileID: 1188275737}
 --- !u!4 &533289796
 Transform:
@@ -9237,6 +9298,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &580002733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 580002734}
+  m_Layer: 0
+  m_Name: BridgesCavePoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &580002734
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580002733}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 40.622, y: -16.316, z: 270.74}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2078835976}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &580930728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25312,6 +25404,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100134, guid: c375a17f5f510d44c839b216989e242d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1435160264}
+    - targetCorrespondingSourceObject: {fileID: 100134, guid: c375a17f5f510d44c839b216989e242d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1435160265}
     - targetCorrespondingSourceObject: {fileID: 100136, guid: c375a17f5f510d44c839b216989e242d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1435160257}
@@ -25395,6 +25490,28 @@ MonoBehaviour:
   - The last guy was right, he is clearly dead...
   - Let's try to find the key to the door, maybe it was on him when he died
   textSpeed: 0.01
+--- !u!114 &1435160265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435160258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 35
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &1442212237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32723,6 +32840,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9068824156799175839, guid: 2b69c6f4686a28246ab3aed9754ac791, type: 3}
   m_PrefabInstance: {fileID: 1886493874}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1893834513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1893834514}
+  m_Layer: 0
+  m_Name: LabyrinthPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1893834514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893834513}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 134.86, y: -24.56, z: 267.34}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2078835976}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1894596981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36679,7 +36827,10 @@ Transform:
   m_Children:
   - {fileID: 972512117}
   - {fileID: 1212609991}
+  - {fileID: 580002734}
+  - {fileID: 66432528}
   - {fileID: 1919371743}
+  - {fileID: 1893834514}
   - {fileID: 444540574}
   - {fileID: 468640429}
   m_Father: {fileID: 8241993672544589206}
@@ -38080,24 +38231,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6479370111665254447, guid: 1e8d0e659b4a0654fabd9965d8e3c97a, type: 3}
       propertyPath: localUseVR
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6479370111665254447, guid: 1e8d0e659b4a0654fabd9965d8e3c97a, type: 3}
       propertyPath: localSpawnIndex
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6479370111665254447, guid: 1e8d0e659b4a0654fabd9965d8e3c97a, type: 3}
       propertyPath: 'spawnPoints.Array.data[0]'
       value: 
-      objectReference: {fileID: 1231893135}
+      objectReference: {fileID: 1212609991}
     - target: {fileID: 6479370111665254447, guid: 1e8d0e659b4a0654fabd9965d8e3c97a, type: 3}
       propertyPath: 'spawnPoints.Array.data[1]'
       value: 
-      objectReference: {fileID: 723528951}
+      objectReference: {fileID: 580002734}
     - target: {fileID: 6479370111665254447, guid: 1e8d0e659b4a0654fabd9965d8e3c97a, type: 3}
       propertyPath: 'spawnPoints.Array.data[2]'
       value: 
-      objectReference: {fileID: 619503060}
+      objectReference: {fileID: 66432528}
     - target: {fileID: 6479370111665254447, guid: 1e8d0e659b4a0654fabd9965d8e3c97a, type: 3}
       propertyPath: localSpawnPoints.Array.size
       value: 6

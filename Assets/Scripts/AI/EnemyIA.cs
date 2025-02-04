@@ -161,11 +161,11 @@ public class EnemyIA : MonoBehaviourPun
             PhotonView playerPhotonView = targetPlayer.GetComponent<PhotonView>();
             int playerId = playerPhotonView.Owner.ActorNumber;
 
-            photonView.RPC("RPC_AttackPlayer", PhotonNetwork.CurrentRoom.GetPlayer(playerId));
+            photonView.RPC("RPC_AttackPlayer", PhotonNetwork.CurrentRoom.GetPlayer(playerId), playerId);
         }
         else
         {
-            RPC_AttackPlayer();
+            RPC_AttackPlayer(0);
         }
         
         Debug.Log($"Attaque le joueur {targetPlayer.name}");
@@ -212,10 +212,10 @@ public class EnemyIA : MonoBehaviourPun
     }
 
     [PunRPC]
-    public void RPC_AttackPlayer()
+    public void RPC_AttackPlayer(int playerId)
     {
         //RPC_ShowMesh();
-        StartCoroutine(LookAtJumpscare());
+        StartCoroutine(LookAtJumpscare(playerId));
         //RPC_HideMesh();
     }
 
@@ -226,7 +226,7 @@ public class EnemyIA : MonoBehaviourPun
         hairMesh.enabled = true;
     }
 
-    private IEnumerator LookAtJumpscare()
+    private IEnumerator LookAtJumpscare(int playerId)
     {
         if (isLooking)
         {
@@ -236,13 +236,37 @@ public class EnemyIA : MonoBehaviourPun
         isLooking = true;
 
         jumpscareAudio.Play();
-        var jumpscare = targetPlayer.GetComponent<Jumpscare>();
+
+        Jumpscare jumpscare = null;
+        if (targetPlayer != null)
+        {
+            jumpscare = targetPlayer.GetComponent<Jumpscare>();
+        }
+        if (jumpscare == null && PhotonNetwork.IsConnected)
+        {
+            PhotonView photonView = GetPhotonViewByPlayerId(playerId);
+            jumpscare = photonView.gameObject.GetComponent<Jumpscare>();
+        }
 
         jumpscare.StartJumpscare();
         yield return new WaitForSeconds(1f);
         jumpscare.StopJumpscare();
 
         isLooking = false;
+    }
+
+    PhotonView GetPhotonViewByPlayerId(int playerId)
+    {
+        PhotonView[] photonViews = FindObjectsOfType<PhotonView>();
+
+        foreach (PhotonView view in photonViews)
+        {
+            if (view.Owner != null && view.Owner.ActorNumber == playerId)
+            {
+                return view;
+            }
+        }
+        return null;
     }
 
     private IEnumerator LookAtForOneSecond(Transform target, Transform cameraTransform)

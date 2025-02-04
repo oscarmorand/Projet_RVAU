@@ -2,8 +2,9 @@ using UnityEngine;
 using System.Collections;
 using TMPro;
 using UnityEngine.InputSystem;
+using Photon.Pun;
 
-public class DeadManDialog : MonoBehaviour
+public class DeadManDialog : MonoBehaviourPun
 {
     public GameObject deadManDialog;
     public GameObject canvas;
@@ -89,9 +90,33 @@ public class DeadManDialog : MonoBehaviour
             {
                 return;
             }
-            canvas.SetActive(true);
-            deadManDialog.SetActive(true);
-            StartDialogue();
+
+            if (PhotonNetwork.IsConnected)
+            {
+                PhotonView playerPhotonView = other.GetComponent<PhotonView>();
+
+                photonView.RPC("RPC_PlayerEnteredDialog", RpcTarget.MasterClient, playerPhotonView.OwnerActorNr);
+            }
+            else
+            {
+                deadManDialog.SetActive(true);
+                canvas.SetActive(true);
+                StartDialogue();
+            }
         }
+    }
+
+    [PunRPC]
+    public void RPC_PlayerEnteredDialog(int playerId)
+    {
+        photonView.RPC("RPC_StartDialog", PhotonNetwork.CurrentRoom.GetPlayer(playerId));
+    }
+
+    [PunRPC]
+    public void RPC_StartDialog()
+    {
+        deadManDialog.SetActive(true);
+        canvas.SetActive(true);
+        StartDialogue();
     }
 }

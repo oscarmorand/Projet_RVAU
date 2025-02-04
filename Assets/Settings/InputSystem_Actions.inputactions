@@ -648,6 +648,17 @@
                 },
                 {
                     "name": "",
+                    "id": "b73404d7-cecb-4cfd-b714-a677dc1b4fa0",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "6e2effe1-11e7-4f48-a1bc-7433956fceec",
                     "path": "<OculusTouchController>/secondaryButton",
                     "interactions": "",

@@ -52,7 +52,7 @@ public class CollapseBridge : MonoBehaviourPunCallbacks
             Debug.Log($"Player {playerId} crossed the bridge.");
 
             // Vérifie si tous les joueurs ont traversé
-            if (playersWhoCrossed.Count == PhotonNetwork.CurrentRoom.PlayerCount)
+            if (playersWhoCrossed.Count >= PhotonNetwork.CurrentRoom.PlayerCount)
             {
                 photonView.RPC("RPC_BreakBridge", RpcTarget.All);
             }

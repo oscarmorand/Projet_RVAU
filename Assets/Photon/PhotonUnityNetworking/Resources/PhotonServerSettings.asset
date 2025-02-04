@@ -77,6 +77,8 @@ MonoBehaviour:
   - RPC_ShowMesh
   - RPC_Hide
   - RPC_Show
+  - RPC_PlayerEnteredDialog
+  - RPC_StartDialog
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
