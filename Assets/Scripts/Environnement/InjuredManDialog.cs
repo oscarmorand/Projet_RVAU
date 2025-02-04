@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class InjuredManDialog : MonoBehaviour
 {
     public GameObject injuredManDialog;
+    public GameObject canvas;
 
     public TextMeshProUGUI textComponent;
     [SerializeField] private string[] lines;
@@ -22,6 +23,7 @@ public class InjuredManDialog : MonoBehaviour
     void Start()
     {
         injuredManDialog.SetActive(false);
+        canvas.SetActive(false);
 
         nextLineAction = InputSystem.actions.FindAction("Pick");
 
@@ -63,6 +65,7 @@ public class InjuredManDialog : MonoBehaviour
         {
             textComponent.text = string.Empty;
             injuredManDialog.SetActive(false);
+            canvas.SetActive(false);
             isDone = true;
         }
     }
@@ -87,6 +90,7 @@ public class InjuredManDialog : MonoBehaviour
                 return;
             }
             injuredManDialog.SetActive(true);
+            canvas.SetActive(true);
             StartDialogue();
         }
     }

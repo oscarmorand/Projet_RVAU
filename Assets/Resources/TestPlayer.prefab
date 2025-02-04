@@ -5804,7 +5804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myParticleSystem: {fileID: 1213845137984281905}
-  packetSize: 100
+  packetSize: 50
   broken: 0
   bipSound: {fileID: 1884281212202953001}
 --- !u!114 &632982381574696877

@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class DeadManDialog : MonoBehaviour
 {
     public GameObject deadManDialog;
+    public GameObject canvas;
 
     public TextMeshProUGUI textComponent;
     [SerializeField] private string[] lines;
@@ -22,6 +23,7 @@ public class DeadManDialog : MonoBehaviour
     void Start()
     {
         deadManDialog.SetActive(false);
+        canvas.SetActive(true);
 
         nextLineAction = InputSystem.actions.FindAction("Pick");
 
@@ -63,6 +65,7 @@ public class DeadManDialog : MonoBehaviour
         {
             textComponent.text = string.Empty;
             deadManDialog.SetActive(false);
+            canvas.SetActive(false);
             isDone = true;
         }
     }
@@ -86,6 +89,7 @@ public class DeadManDialog : MonoBehaviour
             {
                 return;
             }
+            canvas.SetActive(true);
             deadManDialog.SetActive(true);
             StartDialogue();
         }

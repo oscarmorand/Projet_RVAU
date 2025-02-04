@@ -72,14 +72,19 @@ public class ElectricalDoor : MonoBehaviourPun
         {
             return;
         }
+        int count = 0;
         foreach (bool pressed in pressedButtons)
         {
-            if (!pressed)
+            if (pressed)
             {
-                return;
+                count++;
             }
         }
-        photonView.RPC("RPC_OpenDoor", RpcTarget.All);
+        int playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
+        if (count == buttons.Length || count >= playerCount)
+        {
+            photonView.RPC("RPC_OpenDoor", RpcTarget.All);
+        }
     }
 
     [PunRPC]
