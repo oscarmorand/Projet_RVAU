@@ -23,7 +23,7 @@ public class DeadManDialog : MonoBehaviour
     void Start()
     {
         deadManDialog.SetActive(false);
-        canvas.SetActive(true);
+        canvas.SetActive(false);
 
         nextLineAction = InputSystem.actions.FindAction("Pick");
 
